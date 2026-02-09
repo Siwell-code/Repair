@@ -1,0 +1,337 @@
+/* Header.css */
+
+.hero-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 20px 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Логотип - АДАПТИВНЫЙ */
+.logo {
+  z-index: 1001;
+  flex-shrink: 0;
+}
+
+.logo-icon-container {
+  margin-left: -4rem;
+  /* Убираем фиксированные размеры - теперь они в LogoIcon.css */
+  width: auto;
+  height: auto;
+}
+
+/* Контейнер для логотипа */
+.logo-container {
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* Десктоп навигация */
+.nav.desktop-only {
+  display: none;
+}
+
+.header-right.desktop-only {
+  display: none;
+}
+
+.desktop-contacts-group {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.desktop-phone-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.desktop-phone-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.desktop-phone-link:hover {
+  opacity: 0.8;
+}
+
+.desktop-consultation-button {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.desktop-consultation-button:hover {
+  background: white;
+  color: #333;
+}
+
+/* Мобильный хедер */
+.mobile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mobile-contacts-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-phone-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.mobile-phone-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-consultation-button {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mobile-consultation-button:hover {
+  background: white;
+  color: #333;
+}
+
+/* Бургер-меню */
+.burger-menu {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: relative;
+  z-index: 1001;
+}
+
+.burger-menu:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.burger-line {
+  width: 24px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.burger-menu.open .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger-menu.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.open .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Десктоп стили */
+@media (min-width: 1024px) {
+  .nav.desktop-only {
+    display: block;
+  }
+  
+  .header-right.desktop-only {
+    display: block;
+  }
+  
+  .mobile-header {
+    display: none;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.3s;
+    position: relative;
+  }
+  
+  .nav-link:hover {
+    opacity: 0.8;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+}
+
+/* ===== АДАПТИВНОСТЬ ЛОГОТИПА В HEADER ===== */
+
+/* Десктоп: большой логотип */
+.logo-container.desktop {
+  width: 240px;
+}
+
+/* Планшет: средний логотип */
+@media (max-width: 1024px) {
+  .logo-container.desktop {
+    width: 180px;
+  }
+  
+  .logo-icon-container {
+    margin-left: -3rem; /* Уменьшаем отступ */
+  }
+  
+  .desktop-contacts-group {
+    gap: 20px;
+  }
+  
+  .desktop-phone-link {
+    font-size: 14px;
+  }
+  
+  .desktop-consultation-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Большие мобильные (768px и меньше) */
+@media (max-width: 768px) {
+  .logo-container.desktop {
+    width: 140px;
+  }
+  
+  .logo-icon-container {
+    margin-left: -2rem; 
+  }
+  
+  .hero-header {
+    padding: 15px 0;
+  }
+  
+  .header-container {
+    padding: 0 40px;
+  }
+}
+
+/* Маленькие мобильные (480px и меньше) */
+@media (max-width: 480px) {
+  .logo-container.desktop {
+    width: 120px;
+  }
+  
+  .logo-icon-container {
+    margin-left: -1rem; 
+  }
+  
+  .hero-header {
+    padding: 10px 0;
+    padding-bottom: 3;
+  }
+  
+  .header-container {
+    padding: 0 30px;
+    margin-top: 2.5%;
+  }
+  
+  .mobile-phone-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .mobile-consultation-button {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  
+  .burger-menu {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .burger-line {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .logo-container.desktop {
+    width: 80px;
+  }
+  
+  .logo-icon-container {
+    margin-left: 0; /* Убираем отступ */
+  }
+  
+  .mobile-contacts-group {
+    gap: 8px;
+  }
+  
+  .mobile-consultation-button {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+}

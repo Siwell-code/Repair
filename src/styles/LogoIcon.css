@@ -1,0 +1,42 @@
+/* LogoIcon.css */
+
+.logo-container {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.logo-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Десктоп: большой логотип */
+.logo-container.desktop {
+  width: 240px;
+}
+
+/* Планшет: средний логотип */
+@media (max-width: 1024px) {
+  .logo-container.desktop {
+    width: 180px;
+  }
+}
+
+/* Мобильный: маленький логотип */
+@media (max-width: 768px) {
+  .logo-container.desktop {
+    width: 120px;
+  }
+}
+
+/* Мобильный меню: еще меньше */
+.logo-container.mobile {
+  width: 80px;
+}
+
+@media (max-width: 480px) {
+  .logo-container.mobile {
+    width: 60px;
+  }
+}

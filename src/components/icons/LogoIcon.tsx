@@ -1,23 +1,20 @@
 import React from 'react';
 import { ReactComponent as LogoSvg } from './Logo.svg';
+import '../../styles/LogoIcon.css'; 
 
 interface LogoIconProps {
   className?: string;
-  width?: number;
-  height?: number;
 }
 
 const LogoIcon: React.FC<LogoIconProps> = ({ 
-  className, 
-  width = 50, 
-  height = 50 
+  className 
 }) => {
   return (
-    <LogoSvg 
-      className={className}
-      width={width}
-      height={height}
-    />
+    <div className={`logo-container ${className || ''}`}>
+      <LogoSvg 
+        className="logo-svg"
+      />
+    </div>
   );
 };
 
