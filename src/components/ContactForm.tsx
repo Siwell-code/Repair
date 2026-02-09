@@ -45,7 +45,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       };
 
       // Отправляем данные в Google Apps Script
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Важно для Google Script!
         headers: {
