@@ -1,0 +1,329 @@
+/* ===== FOOTER STYLES ===== */
+.footer {
+  background: linear-gradient(135deg, var(--beige-dark) 0%, var(--beige-medium) 100%);
+  color: var(--text-dark);
+  padding: 4rem 0 0 0;
+  position: relative;
+  border-top: 3px solid var(--accent-brown);
+}
+
+.footer-container {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 0 2rem;
+}
+
+/* Колонки */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-column {
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.contacts-column {
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.social-column {
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Логотип */
+.footer-logo {
+  cursor: pointer;
+  filter: 
+    brightness(0.5)
+    sepia(1)
+    saturate(2.5)
+    hue-rotate(330deg);
+  transition: transform var(--transition-fast);
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-logo-icon {
+  width: 300px;
+  height: 120px;
+  filter: sepia(100%) saturate(500%) hue-rotate(340deg);
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px rgba(5, 4, 4, 0.1));
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-brown);
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo-subtext {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+/* Заголовки */
+.footer-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent-brown-dark);
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-brown);
+}
+
+/* Контакты */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-brown);
+  flex-shrink: 0;
+}
+
+.contact-item a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.contact-item a:hover {
+  color: var(--accent-brown);
+}
+
+/* Соцсети */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(168, 125, 95, 0.1);
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+  border-color: rgba(168, 125, 95, 0.3);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Подписка */
+.subscription {
+  width: 100%;
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.email-input {
+  padding: 0.8rem 1.2rem;
+  border: 2px solid rgba(168, 125, 95, 0.3);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: var(--accent-brown);
+  box-shadow: 0 0 0 3px rgba(168, 125, 95, 0.1);
+}
+
+.email-input::placeholder {
+  color: var(--text-gray);
+}
+
+.subscribe-button {
+  background: linear-gradient(135deg, var(--accent-brown), var(--accent-brown-light));
+  color: var(--text-light);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+  text-align: center;
+}
+
+.subscribe-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(168, 125, 95, 0.2);
+}
+
+.footer-bottom-container {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.footer-bottom-container a {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  margin-left: 1rem;
+}
+
+.footer-bottom-container a:hover {
+  color: var(--accent-brown);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .logo-column {
+    grid-column: span 2;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-logo-icon {
+    width: 180px;
+    height: 110px;
+  }
+  
+  .footer-bottom-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 0 0;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+  }
+  
+  .logo-column {
+    grid-column: span 1;
+  }
+  
+  .footer-logo-icon {
+    width: 160px;
+    height: 100px;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+  }
+  
+  .footer-title {
+    font-size: 1.3rem;
+  }
+  
+  .contact-item {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 2.5rem 0 0 0;
+  }
+  
+  .footer-container {
+    padding: 0 1rem;
+  }
+  
+  .footer-logo-icon {
+    width: 140px;
+    height: 85px;
+  }
+  
+  .logo-text {
+    font-size: 1.8rem;
+  }
+  
+  .footer-bottom-container {
+    padding: 0 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .subscription-form {
+    flex-direction: column;
+  }
+  
+  .email-input,
+  .subscribe-button {
+    width: 100%;
+  }
+}

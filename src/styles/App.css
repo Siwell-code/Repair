@@ -1,0 +1,101 @@
+/* Импорт переменных */
+@import './variables.css';
+
+/* Базовые сбросы стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Импорт модульных стилей */
+@import './Home.css';
+@import './Footer.css';
+
+/* Утилитарные классы */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container-wide {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--accent-brown);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.btn-primary {
+  background-color: var(--accent-brown);
+  color: var(--text-light);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-brown-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-dark);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--accent-brown);
+  border: 2px solid var(--accent-brown);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-brown);
+  color: var(--text-light);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .container,
+  .container-wide {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+}

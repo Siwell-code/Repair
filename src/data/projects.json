@@ -1,0 +1,43 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Ремонт квартиры в ЖК 'Президент'",
+      "description": "Полный ремонт 3-комнатной квартиры с дизайнерским решением",
+      "type": "apartment",
+      "area": "120 м²",
+      "duration": "3 месяца",
+      "images": [
+        "/backgrounds/projects.webp",
+        "/backgrounds/hero.webp"
+      ],
+      "date": "2023-10-15"
+    },
+    {
+      "id": 2,
+      "title": "Ремонт загородного дома",
+      "description": "Капитальный ремонт двухэтажного дома с заменой коммуникаций",
+      "type": "house",
+      "area": "240 м²",
+      "duration": "6 месяцев",
+      "images": [
+        "/backgrounds/about.webp",
+        "/backgrounds/hero.webp"
+      ],
+      "date": "2023-08-20"
+    },
+    {
+      "id": 3,
+      "title": "Офисное пространство IT-компании",
+      "description": "Ремонт коммерческого помещения под современный офис",
+      "type": "commercial",
+      "area": "300 м²",
+      "duration": "4 месяца",
+      "images": [
+        "/backgrounds/projects.webp",
+        "/backgrounds/about.webp"
+      ],
+      "date": "2023-11-05"
+    }
+  ]
+}

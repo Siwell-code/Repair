@@ -1,0 +1,38 @@
+:root {
+  /* Цветовая палитра */
+  --beige-light: #f5f1e8;
+  --beige-medium: #E6D5B8;
+  --beige-dark: #D2B48C;
+  --beige-darker: #B8860B;
+  --accent-brown: #c2a682;
+  --accent-brown-light: #a08b74;
+  
+  /* Текст */
+  --text-dark: #333333;
+  --text-light: #FFFFFF;
+  --text-gray: #666666;
+  --text-special:#5a4a3a;
+  
+  /* Отступы */
+  --padding-section: 5rem 2rem;
+  --padding-small: 2rem;
+  
+  /* Максимальные ширины */
+  --max-width: 1200px;
+  --max-width-wide: 1400px;
+  
+  /* Тени */
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 4px 15px rgba(139, 69, 19, 0.3);
+  
+  /* Градиенты */
+  --gradient-overlay: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  
+  /* Анимации */
+  --transition-fast: 0.3s;
+  --transition-slow: 0.5s;
+--transition-smooth:0.5s;
+    --phone-color: #d1b4a0; /* Текущий цвет (коричневый) */
+  --phone-color-hover: #e6c49e; /* Цвет при наведении */
+}
