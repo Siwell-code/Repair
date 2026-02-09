@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 import '../styles/ContactForm.css';
 
 interface ContactFormProps {
@@ -35,31 +34,37 @@ const ContactForm: React.FC<ContactFormProps> = ({
     setError('');
 
     try {
-      // Настройте эти параметры в EmailJS
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-        to_email: 'info@lilard.ru', // Ваша почта
-        date: new Date().toLocaleString('ru-RU')
+      
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWJmTXIykaJjOa3BraPM5paCo40ilNOHERGwQ3jWQyeEqT8Twr6Ba5V47TQfRtQrv_pQ/exec';
+      
+      // Подготовка данных для отправки
+      const payload = {
+        ...formData,
+        date: new Date().toLocaleString('ru-RU'),
+        source: 'website_contact_form'
       };
 
-      // Отправка через EmailJS
-      await emailjs.send(
-        'YOUR_SERVICE_ID',     // Замените на ваш Service ID
-        'YOUR_TEMPLATE_ID',    // Замените на ваш Template ID
-        templateParams,
-        'YOUR_USER_ID'         // Замените на ваш User ID
-      );
+      // Отправляем данные в Google Apps Script
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Важно для Google Script!
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
 
+      
+      console.log('✅ Данные отправлены в Google Script:', payload);
+      
       setIsSuccess(true);
       setFormData({ name: '', phone: '', email: '', message: '' });
       
       // Сброс успешного сообщения через 5 секунд
       setTimeout(() => setIsSuccess(false), 5000);
+      
     } catch (err) {
-      console.error('Ошибка отправки:', err);
+      console.error('❌ Ошибка отправки:', err);
       setError('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или позвоните нам.');
     } finally {
       setIsSubmitting(false);
