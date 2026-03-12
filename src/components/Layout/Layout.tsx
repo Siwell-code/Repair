@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-import Modal from '../Modal'; // Импортируем модалку
+import Modal from '../Modal';
 import './Layout.css';
 
 interface LayoutProps {
@@ -19,7 +19,6 @@ const Layout: React.FC<LayoutProps> = ({
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -35,10 +34,7 @@ const Layout: React.FC<LayoutProps> = ({
       <main className="layout-main">
         {children}
       </main>
-      {/* Передаем openModal в Footer */}
       {showFooter && <Footer onOpenModal={openModal} />}
-      
-      {/* Добавляем модалку */}
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );

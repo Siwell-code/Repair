@@ -14,13 +14,13 @@ const Home: React.FC = () => {
   const projects = [
     {
       id: 'court',
-      title: 'Cуд',
+      title: 'Суд',
       category: 'Государственные объекты',
       description: 'Профессиональный ремонт и реконструкция спортивного суда с современным покрытием и разметкой.',
       images: [
-        'projects/court/1.jpg',
-        'projects/court/2.jpg',
-        'projects/court/3.jpg'
+        '/projects/court/1.jpg',
+        '/projects/court/2.jpg',
+        '/projects/court/3.jpg'
       ]
     },
     {
@@ -29,10 +29,10 @@ const Home: React.FC = () => {
       category: 'Образовательные учреждения',
       description: 'Капитальный ремонт школьных помещений, создание комфортной и безопасной среды для обучения.',
       images: [
-        'projects/school/1.jpg',
-        'projects/school/2.jpg',
-        'projects/school/3.jpg',
-        'projects/school/4.jpg'
+        '/projects/school/1.jpg',
+        '/projects/school/2.jpg',
+        '/projects/school/3.jpg',
+        '/projects/school/4.jpg'
       ]
     },
     {
@@ -41,45 +41,45 @@ const Home: React.FC = () => {
       category: 'Частные дома',
       description: 'Полный комплекс ремонтных работ в частном доме: от дизайн-проекта до чистовой отделки.',
       images: [
-        'projects/house/1.jpg',
-        'projects/house/2.jpg',
-        'projects/house/3.jpg',
-        'projects/house/4.jpg'
+        '/projects/house/1.jpg',
+        '/projects/house/2.jpg',
+        '/projects/house/3.jpg',
+        '/projects/house/4.jpg'
       ]
     },
     {
       id: 'ipsum',
-      title: 'Ipsum',
+      title: 'Аптека Ipsum',
       category: 'Коммерческая недвижимость',
       description: 'Ремонт аптечного помещения с учетом всех требований и стандартов фармацевтической деятельности.',
       images: [
-        'projects/ipsum/1.jpg',
-        'projects/ipsum/2.jpg',
-        'projects/ipsum/3.jpg',
-        'projects/ipsum/4.jpg'
+        '/projects/ipsum/1.jpg',
+        '/projects/ipsum/2.jpg',
+        '/projects/ipsum/3.jpg',
+        '/projects/ipsum/4.jpg'
       ]
     }
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="home-page">
-      {/* Контент Home */}
+      <Header 
+        onOpenModal={openModal}
+        onToggleMenu={toggleMenu}
+        isMenuOpen={isMenuOpen}
+      />
+
+      <MobileMenu 
+        isOpen={isMenuOpen}
+        onClose={closeMenu}
+        onOpenModal={openModal}
+      />
+
       <main className="home-content">
         {/* Hero секция */}
         <section
@@ -88,21 +88,10 @@ const Home: React.FC = () => {
             backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/hero.webp)`
           }}
         >
-
-
-          {/* Мобильное меню */}
-          <MobileMenu 
-            isOpen={isMenuOpen}
-            onClose={closeMenu}
-            onOpenModal={openModal}
-          />
-
-          {/* Контент героя */}
           <div className="hero-content">
             <h1 className="hero-title">Создаём пространство вашей мечты</h1>
             <p className="hero-subtitle">Дизайнерский ремонт квартир и домов под ключ</p>
 
-            {/* Три прозрачных блока */}
             <div className="stats-container">
               <div className="stat-card">
                 <div className="stat-number">100+</div>
@@ -118,14 +107,13 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Кнопка заявки */}
             <button className="cta-button" onClick={openModal}>
               Оставить заявку
             </button>
           </div>
         </section>
 
-        {/* Projects секция - Теперь используем ProjectCard */}
+        {/* Projects секция */}
         <section
           id="projects"
           className="projects-section"
@@ -136,12 +124,11 @@ const Home: React.FC = () => {
           <div className="section-overlay">
             <div className="section-header">
               <h2 className="section-title">Наши работы</h2>
-              <Link to="/projects" className="section-link">
+              <Link to="/projects" className="section-link desktop-only">
                 Смотреть все проекты →
               </Link>
             </div>
             
-            {/* Сетка проектов - используем те же карточки, что и на странице проектов */}
             <div className="projects-grid">
               {projects.map(project => (
                 <ProjectCard
@@ -155,7 +142,6 @@ const Home: React.FC = () => {
               ))}
             </div>
 
-            {/* Кнопка "Все проекты" для мобильных */}
             <div className="mobile-projects-link">
               <Link to="/projects" className="mobile-projects-button">
                 Все проекты
@@ -173,7 +159,7 @@ const Home: React.FC = () => {
           }}
         >
           <div className="section-overlay">
-            <h2 className="section-title1">О нашей компании</h2>
+            <h2 className="section-title">О нашей компании</h2>
             <div className="about-content">
               <div className="about-text">
                 <p>
@@ -183,30 +169,30 @@ const Home: React.FC = () => {
                 <div className="features">
                   <div className="feature">
                     <span className="feature-icon">✓</span>
-                    <div className='lift'>
-                      <p className='prev-text'>Гарантия качества</p>
-                      <span className='any-text'>5 лет гарантии на все работы. Используем только проверенные материалы.</span>
+                    <div className="feature-content">
+                      <p className="feature-title">Гарантия качества</p>
+                      <span className="feature-description">5 лет гарантии на все работы. Используем только проверенные материалы.</span>
                     </div>
                   </div>
                   <div className="feature">
                     <span className="feature-icon">✓</span>
-                    <div className='lift'>
-                      <p className='prev-text'>Персональный прораб</p>
-                      <span className='any-text'>За каждым проектом закреплен личный прораб, который контролирует все этапы.</span>
+                    <div className="feature-content">
+                      <p className="feature-title">Персональный прораб</p>
+                      <span className="feature-description">За каждым проектом закреплен личный прораб, который контролирует все этапы.</span>
                     </div>
                   </div>
                   <div className="feature">
                     <span className="feature-icon">✓</span>
-                    <div className='lift'>
-                      <p className='prev-text'>Соблюдение сроков</p>
-                      <span className='any-text'>Фиксируем сроки в договоре. За каждый день просрочки - 0.01% от стоимости.</span>
+                    <div className="feature-content">
+                      <p className="feature-title">Соблюдение сроков</p>
+                      <span className="feature-description">Фиксируем сроки в договоре. За каждый день просрочки - 0.1% от стоимости.</span>
                     </div>
                   </div>
                   <div className="feature">
                     <span className="feature-icon">✓</span>
-                    <div className='lift'>
-                      <p className='prev-text'>Дизайн и ремонт</p>
-                      <span className='any-text'>Создаем дизайн-проект и реализуем его под ключ. Единая ответственность.</span>
+                    <div className="feature-content">
+                      <p className="feature-title">Дизайн и ремонт</p>
+                      <span className="feature-description">Создаем дизайн-проект и реализуем его под ключ. Единая ответственность.</span>
                     </div>
                   </div>
                 </div>
@@ -220,6 +206,7 @@ const Home: React.FC = () => {
           </div>
         </section>
       </main>
+
       <ScrollToTopButton />
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </div>
