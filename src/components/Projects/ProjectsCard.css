@@ -462,3 +462,17 @@
     font-size: 18px;
   }
 }
+/* ВРЕМЕННО - для отладки */
+.modal-image-container {
+  min-height: 200px !important;
+  background: #f0f0f0 !important;
+  border: 2px solid red !important;
+}
+
+.modal-image {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  min-height: 200px !important;
+  background: blue !important;
+}

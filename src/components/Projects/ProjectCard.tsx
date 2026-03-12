@@ -24,7 +24,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   
   const { openFullscreen } = useFullscreen();
 
-  // Блокируем скролл при открытой модалке
   useEffect(() => {
     if (isModalOpen) {
       scrollPosition.current = window.scrollY;
