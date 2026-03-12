@@ -4,14 +4,13 @@ import Header from '../components/Header';
 import MobileMenu from '../components/MobileMenu';
 import Modal from '../components/Modal';
 import ScrollToTopButton from '../components/ScrollToTopButton';
-import ProjectCard from '../components/Projects/ProjectCard'; // Импортируем ProjectCard
+import ProjectCard from '../components/Projects/ProjectCard';
 import '../styles/Home.css';
 
 const Home: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Данные проектов (копируем из ProjectsPage)
   const projects = [
     {
       id: 'court',
@@ -19,9 +18,9 @@ const Home: React.FC = () => {
       category: 'Государственные объекты',
       description: 'Профессиональный ремонт и реконструкция спортивного суда с современным покрытием и разметкой.',
       images: [
-        '/projects/court/1.jpg',
-        '/projects/court/2.jpg',
-        '/projects/court/3.jpg'
+        'projects/court/1.jpg',
+        'projects/court/2.jpg',
+        'projects/court/3.jpg'
       ]
     },
     {
@@ -30,10 +29,10 @@ const Home: React.FC = () => {
       category: 'Образовательные учреждения',
       description: 'Капитальный ремонт школьных помещений, создание комфортной и безопасной среды для обучения.',
       images: [
-        '/projects/school/1.jpg',
-        '/projects/school/2.jpg',
-        '/projects/school/3.jpg',
-        '/projects/school/4.jpg'
+        'projects/school/1.jpg',
+        'projects/school/2.jpg',
+        'projects/school/3.jpg',
+        'projects/school/4.jpg'
       ]
     },
     {
@@ -42,10 +41,10 @@ const Home: React.FC = () => {
       category: 'Частные дома',
       description: 'Полный комплекс ремонтных работ в частном доме: от дизайн-проекта до чистовой отделки.',
       images: [
-        '/projects/house/1.jpg',
-        '/projects/house/2.jpg',
-        '/projects/house/3.jpg',
-        '/projects/house/4.jpg'
+        'projects/house/1.jpg',
+        'projects/house/2.jpg',
+        'projects/house/3.jpg',
+        'projects/house/4.jpg'
       ]
     },
     {
@@ -54,10 +53,10 @@ const Home: React.FC = () => {
       category: 'Коммерческая недвижимость',
       description: 'Ремонт аптечного помещения с учетом всех требований и стандартов фармацевтической деятельности.',
       images: [
-        '/projects/ipsum/1.jpg',
-        '/projects/ipsum/2.jpg',
-        '/projects/ipsum/3.jpg',
-        '/projects/ipsum/4.jpg'
+        'projects/ipsum/1.jpg',
+        'projects/ipsum/2.jpg',
+        'projects/ipsum/3.jpg',
+        'projects/ipsum/4.jpg'
       ]
     }
   ];
