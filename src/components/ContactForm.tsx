@@ -161,7 +161,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
         <p className="form-note">
           Нажимая кнопку, вы соглашаетесь с 
-          <a href="#privacy"> политикой конфиденциальности</a>
+          <a href="/privacy-policy" className="privacy-link"> политикой конфиденциальности</a>
         </p>
       </form>
     </div>

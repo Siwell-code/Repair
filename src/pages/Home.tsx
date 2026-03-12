@@ -1,42 +1,64 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import MobileMenu from '../components/MobileMenu';
 import Modal from '../components/Modal';
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import ProjectCard from '../components/Projects/ProjectCard'; // Импортируем ProjectCard
 import '../styles/Home.css';
 
 const Home: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Данные проектов (копируем из ProjectsPage)
   const projects = [
     {
-      id: 1,
-      title: "Квартира в центре",
-      description: "Полный ремонт 3-комнатной квартиры",
-      type: "Квартира",
-      image: "/backgrounds/hero.webp"
+      id: 'court',
+      title: 'Cуд',
+      category: 'Государственные объекты',
+      description: 'Профессиональный ремонт и реконструкция спортивного суда с современным покрытием и разметкой.',
+      images: [
+        '/projects/court/1.jpg',
+        '/projects/court/2.jpg',
+        '/projects/court/3.jpg'
+      ]
     },
     {
-      id: 2,
-      title: "Загородный дом",
-      description: "Ремонт двухэтажного коттеджа",
-      type: "Дом",
-      image: "/backgrounds/projects.webp"
+      id: 'school',
+      title: 'Школа',
+      category: 'Образовательные учреждения',
+      description: 'Капитальный ремонт школьных помещений, создание комфортной и безопасной среды для обучения.',
+      images: [
+        '/projects/school/1.jpg',
+        '/projects/school/2.jpg',
+        '/projects/school/3.jpg',
+        '/projects/school/4.jpg'
+      ]
     },
     {
-      id: 3,
-      title: "Офисное пространство",
-      description: "Современный ремонт офиса",
-      type: "Коммерческое",
-      image: "/backgrounds/about.webp"
+      id: 'house',
+      title: 'Дом',
+      category: 'Частные дома',
+      description: 'Полный комплекс ремонтных работ в частном доме: от дизайн-проекта до чистовой отделки.',
+      images: [
+        '/projects/house/1.jpg',
+        '/projects/house/2.jpg',
+        '/projects/house/3.jpg',
+        '/projects/house/4.jpg'
+      ]
     },
     {
-      id: 4,
-      title: "Квартира-студия",
-      description: "Евроремонт в современном стиле",
-      type: "Квартира",
-      image: "/backgrounds/hero.webp"
+      id: 'ipsum',
+      title: 'Ipsum',
+      category: 'Коммерческая недвижимость',
+      description: 'Ремонт аптечного помещения с учетом всех требований и стандартов фармацевтической деятельности.',
+      images: [
+        '/projects/ipsum/1.jpg',
+        '/projects/ipsum/2.jpg',
+        '/projects/ipsum/3.jpg',
+        '/projects/ipsum/4.jpg'
+      ]
     }
   ];
 
@@ -67,12 +89,7 @@ const Home: React.FC = () => {
             backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/hero.webp)`
           }}
         >
-          {/* Хедер */}
-          <Header 
-            onOpenModal={openModal}
-            onToggleMenu={toggleMenu}
-            isMenuOpen={isMenuOpen}
-          />
+
 
           {/* Мобильное меню */}
           <MobileMenu 
@@ -109,7 +126,7 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* Projects секция */}
+        {/* Projects секция - Теперь используем ProjectCard */}
         <section
           id="projects"
           className="projects-section"
@@ -118,24 +135,32 @@ const Home: React.FC = () => {
           }}
         >
           <div className="section-overlay">
-            <h2 className="section-title">Наши работы</h2>
+            <div className="section-header">
+              <h2 className="section-title">Наши работы</h2>
+              <Link to="/projects" className="section-link">
+                Смотреть все проекты →
+              </Link>
+            </div>
+            
+            {/* Сетка проектов - используем те же карточки, что и на странице проектов */}
             <div className="projects-grid">
               {projects.map(project => (
-                <div key={project.id} className="project-card">
-                  <div
-                    className="project-image"
-                    style={{
-                      backgroundImage: `url(${project.image})`
-                    }}
-                  >
-                    <div className="project-type">{project.type}</div>
-                  </div>
-                  <div className="project-info">
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                  </div>
-                </div>
+                <ProjectCard
+                  key={project.id}
+                  id={project.id}
+                  title={project.title}
+                  category={project.category}
+                  description={project.description}
+                  images={project.images}
+                />
               ))}
+            </div>
+
+            {/* Кнопка "Все проекты" для мобильных */}
+            <div className="mobile-projects-link">
+              <Link to="/projects" className="mobile-projects-button">
+                Все проекты
+              </Link>
             </div>
           </div>
         </section>

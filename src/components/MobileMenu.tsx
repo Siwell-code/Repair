@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import PhoneIcon from './icons/PhoneIcon';
 import LogoIcon from './icons/LogoIcon';
 import '../styles/MobileMenu.css';
@@ -10,31 +11,27 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal }) => {
+  const location = useLocation();
+  
   // Блокируем скролл при открытом меню
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('menu-open');
-      // Блокируем свайпы на меню когда оно закрыто
-      const handleTouchMove = (e: TouchEvent) => {
-        e.preventDefault();
-      };
-      
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      
       return () => {
-        document.removeEventListener('touchmove', handleTouchMove);
         document.body.classList.remove('menu-open');
       };
-    } else {
-      document.body.classList.remove('menu-open');
     }
   }, [isOpen]);
 
-  const handleMenuClick = (e: React.MouseEvent) => {
-    // Закрываем меню при клике на ссылку
-    if ((e.target as HTMLElement).tagName === 'A') {
-      onClose();
+  // Функция для прокрутки к секциям на главной
+  const handleNavigation = (sectionId?: string) => {
+    if (sectionId && location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+    onClose();
   };
 
   const handleOpenModal = () => {
@@ -42,23 +39,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal })
     onClose();
   };
 
-  // Если меню закрыто, не рендерим его вообще
   if (!isOpen) return null;
 
   return (
     <>
-      {/* Оверлей (фон) */}
       <div className="menu-overlay" onClick={onClose} />
       
-      {/* Само меню */}
-      <div className="mobile-menu" onClick={handleMenuClick}>
+      <div className="mobile-menu">
         <div className="mobile-menu-content">
           {/* Шапка меню */}
           <div className="mobile-menu-header">
             <div className="mobile-logo">
-              <div className="logo-icon-container">
-                <LogoIcon className="logo-icon" />
-              </div>
+              <Link to="/" onClick={onClose}>
+                <LogoIcon className="mobile" />
+              </Link>
             </div>
             <button
               className="close-menu"
@@ -73,28 +67,29 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal })
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
               <li className="mobile-nav-item">
-                <a
-                  href="#projects"
+                <button
                   className="mobile-nav-link"
+                  onClick={() => handleNavigation('projects')}
                 >
                   Проекты
-                </a>
+                </button>
               </li>
               <li className="mobile-nav-item">
-                <a
-                  href="#about"
+                <button
                   className="mobile-nav-link"
+                  onClick={() => handleNavigation('about')}
                 >
                   О нас
-                </a>
+                </button>
               </li>
               <li className="mobile-nav-item">
-                <a
-                  href="#contacts"
+                <Link
+                  to="/privacy-policy"
                   className="mobile-nav-link"
+                  onClick={onClose}
                 >
-                  Контакты
-                </a>
+                  Политика конфиденциальности
+                </Link>
               </li>
             </ul>
           </nav>

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import PhoneIcon from './icons/PhoneIcon';
-import LogoIcon from '../components/icons/LogoIcon'; 
+import LogoIcon from './icons/LogoIcon';
 import '../styles/Header.css';
 
 interface HeaderProps {
@@ -10,31 +11,50 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }) => {
+  const location = useLocation();
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className="hero-header">
       <div className="header-container">
-        {/* Логотип слева - используем desktop класс */}
+        {/* Логотип слева */}
         <div className="logo">
-          <div className="logo-icon-container">
-            <LogoIcon className="desktop" /> {/* desktop класс для размера */}
-          </div>
+          <Link to="/">
+            <div className="logo-icon-container">
+              <LogoIcon className="desktop" />
+            </div>
+          </Link>
         </div>
 
         {/* Навигация для десктопа */}
         <nav className="nav desktop-only">
           <ul className="nav-list">
             <li className="nav-item">
-              <a href="#projects" className="nav-link">
+              <Link to="/projects" className="nav-link">
                 Проекты
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#about" className="nav-link">
+              <a
+                className="nav-link"
+                onClick={() => scrollToSection('about')}
+              >
                 О нас
               </a>
             </li>
             <li className="nav-item">
-              <a href="#contacts" className="nav-link">
+              <a
+                className="nav-link"
+                onClick={() => scrollToSection('footer')}
+              >
                 Контакты
               </a>
             </li>

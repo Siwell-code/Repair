@@ -1,5 +1,4 @@
-/* Header.css */
-
+/* ===== HEADER ===== */
 .hero-header {
   position: absolute;
   top: 0;
@@ -18,15 +17,24 @@
   align-items: center;
 }
 
-/* Логотип - АДАПТИВНЫЙ */
+/* ===== ЛОГОТИП ===== */
 .logo {
   z-index: 1001;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo:active {
+  transform: scale(0.95);
 }
 
 .logo-icon-container {
   margin-left: -4rem;
-  /* Убираем фиксированные размеры - теперь они в LogoIcon.css */
   width: auto;
   height: auto;
 }
@@ -37,7 +45,12 @@
   max-width: 100%;
 }
 
-/* Десктоп навигация */
+/* Десктоп: большой логотип */
+.logo-container.desktop {
+  width: 240px;
+}
+
+/* ===== ДЕСКТОП НАВИГАЦИЯ ===== */
 .nav.desktop-only {
   display: none;
 }
@@ -73,7 +86,7 @@
 .desktop-consultation-button {
   padding: 12px 24px;
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid white;
+  border: 2px solid #c2a682;
   border-radius: 8px;
   color: white;
   font-size: 14px;
@@ -83,11 +96,11 @@
 }
 
 .desktop-consultation-button:hover {
-  background: white;
+  background: #c2a682;
   color: #333;
 }
 
-/* Мобильный хедер */
+/* ===== МОБИЛЬНЫЙ ХЕДЕР ===== */
 .mobile-header {
   display: flex;
   align-items: center;
@@ -132,7 +145,7 @@
   color: #333;
 }
 
-/* Бургер-меню */
+/* ===== БУРГЕР-МЕНЮ ===== */
 .burger-menu {
   width: 44px;
   height: 44px;
@@ -174,7 +187,7 @@
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Десктоп стили */
+/* ===== ДЕСКТОП СТИЛИ (1024px И БОЛЬШЕ) ===== */
 @media (min-width: 1024px) {
   .nav.desktop-only {
     display: block;
@@ -196,13 +209,22 @@
     padding: 0;
   }
   
+  .nav-item {
+    position: relative;
+  }
+  
   .nav-link {
     color: white;
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
     transition: opacity 0.3s;
     position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
   }
   
   .nav-link:hover {
@@ -216,8 +238,8 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: white;
-    transition: width 0.3s;
+    background: linear-gradient(90deg, #c2a682, #e6d5b8);
+    transition: width 0.3s ease;
   }
   
   .nav-link:hover::after {
@@ -225,21 +247,16 @@
   }
 }
 
-/* ===== АДАПТИВНОСТЬ ЛОГОТИПА В HEADER ===== */
+/* ===== АДАПТИВНОСТЬ ЛОГОТИПА ===== */
 
-/* Десктоп: большой логотип */
-.logo-container.desktop {
-  width: 240px;
-}
-
-/* Планшет: средний логотип */
+/* Планшет (до 1024px) */
 @media (max-width: 1024px) {
   .logo-container.desktop {
     width: 180px;
   }
   
   .logo-icon-container {
-    margin-left: -3rem; /* Уменьшаем отступ */
+    margin-left: -3rem;
   }
   
   .desktop-contacts-group {
@@ -256,7 +273,7 @@
   }
 }
 
-/* Большие мобильные (768px и меньше) */
+/* Большие мобильные (до 768px) */
 @media (max-width: 768px) {
   .logo-container.desktop {
     width: 140px;
@@ -275,7 +292,7 @@
   }
 }
 
-/* Маленькие мобильные (480px и меньше) */
+/* Маленькие мобильные (до 480px) */
 @media (max-width: 480px) {
   .logo-container.desktop {
     width: 120px;
@@ -287,7 +304,6 @@
   
   .hero-header {
     padding: 10px 0;
-    padding-bottom: 3;
   }
   
   .header-container {
@@ -316,14 +332,14 @@
   }
 }
 
-/* Очень маленькие экраны (360px и меньше) */
+/* Очень маленькие экраны (до 360px) */
 @media (max-width: 360px) {
   .logo-container.desktop {
-    width: 80px;
+    width: 100px;
   }
   
   .logo-icon-container {
-    margin-left: 0; /* Убираем отступ */
+    margin-left: 0; 
   }
   
   .mobile-contacts-group {
@@ -334,4 +350,37 @@
     padding: 6px 10px;
     font-size: 10px;
   }
+}
+
+/* ===== УБИРАЕМ ВСЕ ЛИШНИЕ ЭФФЕКТЫ ===== */
+
+/* Убираем hover эффекты на внутренних элементах */
+.logo * {
+  transition: none;
+}
+
+.logo *::before,
+.logo *::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Запрещаем любые трансформации внутри логотипа */
+.logo:hover * {
+  transform: none !important;
+}
+
+/* Только один эффект - на сам логотип */
+.logo {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden; /* Fix flickering */
+}
+
+.logo:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+.logo:active {
+  transform: scale(0.95) translateZ(0);
 }

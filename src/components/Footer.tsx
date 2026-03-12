@@ -1,120 +1,166 @@
-import React, { useState } from 'react';
-import LogoIcon from '../components/icons/LogoIcon';
-import PhoneIcon from '../components/icons/PhoneIcon';
-import MailIcon from '../components/icons/PhoneIcon';
-import LocationIcon from '../components/icons/PhoneIcon';
-import ClockIcon from '../components/icons/PhoneIcon';
-import VkIcon from '../components/icons/VkIcon';
-import TelegramIcon from '../components/icons/TelegramIcon';
-import RutubeIcon from '../components/icons/RutubeIcon';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PhoneIcon from './icons/PhoneIcon';
+import EmailIcon from './icons/EmailIcon';
+import RutubeIcon from './icons/RutubeIcon';
+import LocationIcon from './icons/LocationIcon';
+import ClockIcon from './icons/ClockIcon';
+import TelegramIcon from './icons/TelegramIcon';
+import VKIcon from './icons/VkIcon';
 import '../styles/Footer.css';
 
-const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
+interface FooterProps {
+  onOpenModal: () => void;
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Email for subscription:', email);
-    setEmail('');
-    alert('Спасибо за подписку!');
+const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
+  const currentYear = new Date().getFullYear();
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="contacts">
       <div className="footer-container">
-        {/* Левая колонка - Логотип и слоган */}
-        <div className="footer-column logo-column">
-          <div className="footer-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <LogoIcon className="footer-logo-icon" />
+        <div className="footer-main">
+          <div className="footer-column">
+            <div className="footer-logo" onClick={scrollToTop}>
+              <h2 className="footer-brand">LILARD</h2>
+              <div className="footer-brand-underline"></div>
+            </div>
+            <p className="footer-description">
+              Профессиональный ремонт квартир и домов под ключ.
+              Создаем пространство вашей мечты с 2019 года.
+            </p>
+            <div className="footer-social">
+              <a
+                href="https://t.me/lilard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label="Telegram"
+              >
+                <TelegramIcon size={20} color="#fff" />
+              </a>
+              <a
+                href="https://rutube.ru/channel/ваш_канал/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label="Rutube"
+              >
+                <RutubeIcon size={16} color="#fff" />
+              </a>
+              <a
+                href="https://vk.com/lilard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label="VK"
+              >
+                <VKIcon size={20} color="#fff" />
+              </a>
+            </div>
+          </div>
+
+          <div className="footer-column">
+            <h3 className="footer-title">Навигация</h3>
+            <ul className="footer-menu">
+              <li>
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="footer-link"
+                >
+                  Наши работы
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="footer-link"
+                >
+                  О компании
+                </button>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="footer-link">
+                  Политика конфиденциальности
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-column">
+            <h3 className="footer-title">Контакты</h3>
+            <div className="footer-contact-item">
+              <PhoneIcon size={18} color="#a87d5f" />
+              <a href="tel:+79991234567" className="footer-contact-link">
+                +7 (999) 123-45-67
+              </a>
+            </div>
+            <div className="footer-contact-item">
+              <EmailIcon size={18} color="#a87d5f" />
+              <a href="mailto:info@lilard.ru" className="footer-contact-link">
+                info@lilard.ru
+              </a>
+            </div>
+            <div className="footer-contact-item">
+              <LocationIcon size={18} color="#a87d5f" />
+              <span className="footer-contact-text">
+                г. Москва, ул. Строителей, 15
+              </span>
+            </div>
+            <div className="footer-contact-item">
+              <ClockIcon size={18} color="#a87d5f" />
+              <span className="footer-contact-text">
+                Пн-Пт: 9:00 - 20:00<br />
+                Сб-Вс: 10:00 - 18:00
+              </span>
+            </div>
+          </div>
+
+          <div className="footer-column">
+            <h3 className="footer-title">Быстрая связь</h3>
+            <p className="footer-quick-text">
+              Оставьте заявку и мы перезвоним вам в течение 15 минут
+            </p>
+            <button
+              className="footer-button"
+              onClick={onOpenModal}
+            >
+              Заказать звонок
+            </button>
+            <div className="footer-payment">
+              <p>Принимаем к оплате:</p>
+              <div className="payment-icons">
+                <span className="payment-icon">Visa</span>
+                <span className="payment-icon">MasterCard</span>
+                <span className="payment-icon">МИР</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Центральная колонка - Контакты */}
-        <div className="footer-column contacts-column">
-          <h3 className="footer-title">Контакты</h3>
-          <div className="contact-info">
-            <div className="contact-item">
-              <LocationIcon className="contact-icon" />
-              <span>Москва, ул. Горбунова, д.2, стр.3</span>
-            </div>
-            <div className="contact-item">
-              <PhoneIcon className="contact-icon" />
-              <a href="tel:+79991234567">+7 (999) 123-45-67</a>
-            </div>
-            <div className="contact-item">
-              <MailIcon className="contact-icon" />
-              <a href="mailto:info@lilard.ru">ooo.lilard@yandex.ru</a>
-            </div>
-            <div className="contact-item">
-              <ClockIcon className="contact-icon" />
-              <span>Пн-Вс: 9:00-18:00</span>
-            </div>
+        <div className="footer-bottom">
+          <div className="footer-copyright">
+            © {currentYear} LILARD. Все права защищены. Разработано Siwell-code.
           </div>
-        </div>
-
-        {/* Правая колонка - Соцсети и подписка */}
-        <div className="footer-column social-column">
-          <h3 className="footer-title">Мы в соцсетях</h3>
-          <div className="social-links">
-            <a
-              href="https://vk.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="ВКонтакте"
-            >
-              <VkIcon className="social-icon" />
-              <span>ВКонтакте</span>
-            </a>
-            <a
-              href="https://t.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="Telegram"
-            >
-              <TelegramIcon className="social-icon" />
-              <span>Telegram</span>
-            </a>
-            <a
-              href="https://rutube.ru"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="Rutube"
-            >
-              <RutubeIcon className="social-icon" />
-              <span>Rutube</span>
-            </a>
+          <div className="footer-legal">
+            <Link to="/privacy-policy" className="footer-legal-link">
+              Политика конфиденциальности
+            </Link>
+            <Link to="/terms" className="footer-legal-link">
+              Пользовательское соглашение
+            </Link>
           </div>
-
-          <div className="subscription">
-            <h3 className="footer-title">Подпишитесь на новости</h3>
-            <form className="subscription-form" onSubmit={handleSubmit}>
-              <input
-                type="email"
-                placeholder="Ваш email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="email-input"
-              />
-              <button type="submit" className="subscribe-button">
-                Подписаться
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      {/* Нижняя часть футера */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-container">
-          <p>© {new Date().getFullYear()} Siwell-code. Все права защищены.</p>
-          <p>
-            <a href="#privacy">Политика конфиденциальности</a> |
-            <a href="#terms"> Условия использования</a>
-          </p>
         </div>
       </div>
     </footer>

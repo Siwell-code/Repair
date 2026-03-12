@@ -1,0 +1,204 @@
+/* ProjectsPage.css */
+
+.projects-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdf6e3 0%, #f5f5dc 100%);
+}
+
+/* Hero секция */
+.projects-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  padding: 120px 20px 80px;
+  text-align: center;
+  color: white;
+}
+
+.projects-title {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.projects-subtitle {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+/* Контейнер */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Фильтр */
+.projects-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.filter-button {
+  padding: 12px 24px;
+  background: white;
+  border: 2px solid #8a6b52;
+  color: #8a6b52;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background: #8a6b52;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.filter-button.active {
+  background: linear-gradient(135deg, #8a6b52, #a87d5f);
+  color: white;
+  border-color: transparent;
+}
+
+/* Сетка проектов */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Нет проектов */
+.no-projects {
+  text-align: center;
+  padding: 60px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.no-projects p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* CTA секция */
+.projects-cta {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #f5f5dc;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.cta-content .cta-button {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #8a6b52, #a87d5f);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-content .cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .projects-title {
+    font-size: 3rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-hero {
+    padding: 100px 20px 60px;
+  }
+  
+  .projects-title {
+    font-size: 2.5rem;
+  }
+  
+  .projects-subtitle {
+    font-size: 1rem;
+  }
+  
+  .projects-container {
+    padding: 40px 20px;
+  }
+  
+  .projects-filter {
+    gap: 10px;
+  }
+  
+  .filter-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-title {
+    font-size: 2rem;
+  }
+  
+  .projects-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-button {
+    width: 100%;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-content .cta-button {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+}
