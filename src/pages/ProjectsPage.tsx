@@ -18,7 +18,7 @@ const ProjectsPage: React.FC = () => {
       id: 'court',
       title: 'Cуд',
       category: 'Государственные объекты',
-      description: 'Профессиональный ремонт и реконструкция спортивного суда с современным покрытием и разметкой.',
+      description: 'Профессиональный ремонт и реконструкция суда с современным покрытием.',
       images: [
         'projects/court/1.jpg',
         'projects/court/2.jpg',
@@ -53,7 +53,7 @@ const ProjectsPage: React.FC = () => {
       id: 'ipsum',
       title: 'Ipsum',
       category: 'Коммерческая недвижимость',
-      description: 'Ремонт аптечного помещения с учетом всех требований и стандартов фармацевтической деятельности.',
+      description: 'Ремонт помещения с учетом всех требований и стандартов деятельности.',
       images: [
         'projects/ipsum/1.jpg',
         'projects/ipsum/2.jpg',
