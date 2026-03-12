@@ -154,13 +154,14 @@
 
 /* ===== PROJECTS SECTION ===== */
 .projects-section {
-  padding: 30px 2rem;
+  padding: 40px 3rem 6rem 40px;
   background-size: cover;
   background-position: center;
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+
 }
 
 .projects-section::before {
@@ -168,12 +169,13 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5));
+  
 }
 
 .section-overlay {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }

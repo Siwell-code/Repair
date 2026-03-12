@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import Modal from '../Modal';
+import FullscreenViewer from '../FullscreenViewer/FullscreenViewer';
+import { FullscreenProvider } from '../../context/FullscreenContext';
 import './Layout.css';
 
 interface LayoutProps {
@@ -23,20 +25,23 @@ const Layout: React.FC<LayoutProps> = ({
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="layout">
-      {showHeader && (
-        <Header 
-          onOpenModal={openModal}
-          onToggleMenu={toggleMenu}
-          isMenuOpen={isMenuOpen}
-        />
-      )}
-      <main className="layout-main">
-        {children}
-      </main>
-      {showFooter && <Footer onOpenModal={openModal} />}
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
-    </div>
+    <FullscreenProvider>
+      <div className="layout">
+        {showHeader && (
+          <Header 
+            onOpenModal={openModal}
+            onToggleMenu={toggleMenu}
+            isMenuOpen={isMenuOpen}
+          />
+        )}
+        <main className="layout-main">
+          {children}
+        </main>
+        {showFooter && <Footer onOpenModal={openModal} />}
+        <Modal isOpen={isModalOpen} onClose={closeModal} />
+        <FullscreenViewer />
+      </div>
+    </FullscreenProvider>
   );
 };
 
