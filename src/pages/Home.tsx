@@ -49,7 +49,7 @@ const Home: React.FC = () => {
     },
     {
       id: 'ipsum',
-      title: 'Аптека Ipsum',
+      title: 'Ipsum',
       category: 'Коммерческая недвижимость',
       description: 'Ремонт помещения с учетом всех требований и стандартов деятельности.',
       images: [
@@ -68,13 +68,13 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-page">
-      <Header 
+      <Header
         onOpenModal={openModal}
         onToggleMenu={toggleMenu}
         isMenuOpen={isMenuOpen}
       />
 
-      <MobileMenu 
+      <MobileMenu
         isOpen={isMenuOpen}
         onClose={closeMenu}
         onOpenModal={openModal}
@@ -124,11 +124,9 @@ const Home: React.FC = () => {
           <div className="section-overlay">
             <div className="section-header">
               <h2 className="section-title">Наши работы</h2>
-              <Link to="/projects" className="section-link desktop-only">
-                Смотреть все проекты →
-              </Link>
+
             </div>
-            
+
             <div className="projects-grid">
               {projects.map(project => (
                 <ProjectCard
@@ -198,7 +196,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="button-container">
+
+            <div className="about-button-container">
               <button className="cta-button" onClick={openModal}>
                 Оставить заявку
               </button>
@@ -206,7 +205,6 @@ const Home: React.FC = () => {
           </div>
         </section>
       </main>
-
       <ScrollToTopButton />
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </div>

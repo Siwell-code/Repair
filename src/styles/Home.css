@@ -67,7 +67,7 @@
   display: flex;
   justify-content: center;
   gap: 3rem;
-  margin: 3rem 0;
+  margin: 5rem 0;
   flex-wrap: wrap;
 }
 
@@ -103,9 +103,11 @@
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #fff, #f5f5dc);
+  background: linear-gradient(135deg, #ffffff, #f5f5dc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: white; /* Запасной цвет */
 }
 
 .stat-text {
@@ -113,7 +115,7 @@
   opacity: 0.9;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9); /* Было rgba(225, 204, 204, 0.9) */
 }
 
 /* КНОПКА CTA */
@@ -121,7 +123,8 @@
   background: linear-gradient(135deg, #8a6b52, #a87d5f);
   color: white;
   border: none;
-  padding: 1.3rem 3.5rem;
+  padding: 1.3rem 4.5rem;
+  margin-top: 22px;
   font-size: 1.2rem;
   border-radius: 20px;
   cursor: pointer;
@@ -150,6 +153,22 @@
 
 .cta-button:hover::before {
   left: 100%;
+}
+
+.about-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.about-section .cta-button {
+  margin: 0 auto;
+}
+
+.about-section .section-title {
+  margin-top: -50px; 
 }
 
 /* ===== PROJECTS SECTION ===== */
@@ -183,17 +202,17 @@
 .section-title {
   font-size: 3.5rem;
   text-align: center;
-  margin-bottom: 2rem;
   color: white;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   font-weight: 700;
   position: relative;
+  margin-top: -80px;
 }
 
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
@@ -229,15 +248,6 @@
   margin-top: 3rem;
 }
 
-/* Заголовок секции с ссылкой */
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
 .section-link {
   color: white;
