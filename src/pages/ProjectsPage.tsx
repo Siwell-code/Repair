@@ -20,9 +20,9 @@ const ProjectsPage: React.FC = () => {
       category: 'Государственные объекты',
       description: 'Профессиональный ремонт и реконструкция суда с современным покрытием.',
       images: [
-        'projects/court/1.jpg',
-        'projects/court/2.jpg',
-        'projects/court/3.jpg'
+        'projects/court/1.webp',
+        'projects/court/2.webp',
+        'projects/court/3.webp'
       ]
     },
     {
@@ -31,10 +31,10 @@ const ProjectsPage: React.FC = () => {
       category: 'Образовательные учреждения',
       description: 'Капитальный ремонт школьных помещений, создание комфортной и безопасной среды для обучения.',
       images: [
-        'projects/school/1.jpg',
-        'projects/school/2.jpg',
-        'projects/school/3.jpg',
-        'projects/school/4.jpg'
+        'projects/school/1.webp',
+        'projects/school/2.webp',
+        'projects/school/3.webp',
+        'projects/school/4.webp'
       ]
     },
     {
@@ -43,10 +43,10 @@ const ProjectsPage: React.FC = () => {
       category: 'Частные дома',
       description: 'Полный комплекс ремонтных работ в частном доме: от дизайн-проекта до чистовой отделки.',
       images: [
-        'projects/house/1.jpg',
-        'projects/house/2.jpg',
-        'projects/house/3.jpg',
-        'projects/house/4.jpg'
+        'projects/house/1.webp',
+        'projects/house/2.webp',
+        'projects/house/3.webp',
+        'projects/house/4.webp'
       ]
     },
     {
@@ -55,10 +55,10 @@ const ProjectsPage: React.FC = () => {
       category: 'Коммерческая недвижимость',
       description: 'Ремонт помещения с учетом всех требований и стандартов деятельности.',
       images: [
-        'projects/ipsum/1.jpg',
-        'projects/ipsum/2.jpg',
-        'projects/ipsum/3.jpg',
-        'projects/ipsum/4.jpg'
+        'projects/ipsum/1.webp',
+        'projects/ipsum/2.webp',
+        'projects/ipsum/3.webp',
+        'projects/ipsum/4.webp'
       ]
     }
   ];
