@@ -37,17 +37,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
       
       const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWJmTXIykaJjOa3BraPM5paCo40ilNOHERGwQ3jWQyeEqT8Twr6Ba5V47TQfRtQrv_pQ/exec';
       
-      // Подготовка данных для отправки
+  
       const payload = {
         ...formData,
         date: new Date().toLocaleString('ru-RU'),
         source: 'website_contact_form'
       };
 
-      // Отправляем данные в Google Apps Script
     await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // Важно для Google Script!
+        mode: 'no-cors', 
         headers: {
           'Content-Type': 'application/json',
         },
@@ -60,7 +59,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       setIsSuccess(true);
       setFormData({ name: '', phone: '', email: '', message: '' });
       
-      // Сброс успешного сообщения через 5 секунд
+  
       setTimeout(() => setIsSuccess(false), 5000);
       
     } catch (err) {
@@ -71,7 +70,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
   };
 
-  // Если форма успешно отправлена, показываем сообщение
   if (isSuccess) {
     return (
       <div className="form-success">

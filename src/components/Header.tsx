@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }
     }
   };
 
-  const phoneNumber = "+7 (999) 123-45-67";
+  const phoneNumber = "+7 (909) 655-63-99";
 
   return (
     <header className="hero-header">

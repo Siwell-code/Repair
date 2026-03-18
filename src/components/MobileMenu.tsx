@@ -99,8 +99,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal })
           <div className="mobile-menu-contacts">
             <div className="mobile-menu-phone">
               <PhoneIcon size={24} color="#a87d5f" />
-              <a href="tel:+79991234567" className="mobile-phone-number">
-                +7 (999) 123-45-67
+              <a href="tel:+79096556399" className="mobile-phone-number">
+                +7 (909) 655-63-99
               </a>
             </div>
 
@@ -109,8 +109,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal })
             </button>
 
             <div className="mobile-menu-hours">
-              <p>Пн-Пт: 9:00 - 19:00</p>
-              <p>Сб: 10:00 - 16:00</p>
+              <p>Пн-Пт: 9:00 - 20:00</p>
+              <p>Сб: 10:00 - 18:00</p>
             </div>
           </div>
         </div>

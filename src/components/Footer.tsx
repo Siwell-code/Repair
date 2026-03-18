@@ -102,20 +102,20 @@ const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
             <h3 className="footer-title">Контакты</h3>
             <div className="footer-contact-item">
               <PhoneIcon size={18} color="#a87d5f" />
-              <a href="tel:+79991234567" className="footer-contact-link">
-                +7 (999) 123-45-67
+              <a href="tel:+79096556399" className="footer-contact-link">
+                +7 (909) 655-63-99
               </a>
             </div>
             <div className="footer-contact-item">
               <EmailIcon size={18} color="#a87d5f" />
-              <a href="mailto:info@lilard.ru" className="footer-contact-link">
-                info@lilard.ru
+              <a href="mailto:info@lilard.company" className="footer-contact-link">
+                info@lilard.company
               </a>
             </div>
             <div className="footer-contact-item">
               <LocationIcon size={18} color="#a87d5f" />
               <span className="footer-contact-text">
-                г. Москва, ул. Строителей, 15
+                г. Москва, ул. Горбунова, д. 2
               </span>
             </div>
             <div className="footer-contact-item">

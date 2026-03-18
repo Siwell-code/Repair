@@ -116,8 +116,8 @@ const PrivacyPolicy: React.FC = () => {
             </p>
             <div className="contact-info">
               <p><strong>Компания:</strong> LILARD</p>
-              <p><strong>Email:</strong> info@lilard.ru</p>
-              <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+              <p><strong>Email:</strong> info@lilard.company</p>
+              <p><strong>Телефон:</strong> +7 (909) 655-63-99</p>
             </div>
           </section>
           

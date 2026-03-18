@@ -9,7 +9,7 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title = "Бесплатная консультация" }) => {
-  // Блокируем скролл при открытом модальном окне
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -22,7 +22,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title = "Бесплат�
     };
   }, [isOpen]);
 
-  // Закрытие по ESC
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -57,7 +56,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title = "Бесплат�
         <div className="modal-footer">
           <p className="modal-contact-info">
             Или позвоните нам прямо сейчас: 
-            <a href="tel:+79991234567"> +7 (999) 123-45-67</a>
+            <a href="tel:+79991234567"> +7 (909) 655-63-99</a>
           </p>
         </div>
       </div>
