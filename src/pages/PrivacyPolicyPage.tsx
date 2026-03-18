@@ -1,12 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PrivacyPolicy from '../components/PrivacyPolicy/PrivacyPolicy';
-import Layout from '../components/Layout/Layout';
+import '../styles/PrivacyPolicyPage.css';
 
 const PrivacyPolicyPage: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
-    <Layout>
+    <div className="privacy-page">
+      <div className="privacy-page-header">
+        <button className="privacy-page-back" onClick={() => navigate(-1)}>
+          ← Назад
+        </button>
+      </div>
+      
       <PrivacyPolicy />
-    </Layout>
+    </div>
   );
 };
 

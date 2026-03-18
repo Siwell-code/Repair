@@ -13,17 +13,18 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal }) => {
   const location = useLocation();
   
-  // Блокируем скролл при открытом меню
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('menu-open');
-      return () => {
-        document.body.classList.remove('menu-open');
-      };
+    } else {
+      document.body.classList.remove('menu-open');
     }
+
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
   }, [isOpen]);
 
-  // Функция для прокрутки к секциям на главной
   const handleNavigation = (sectionId?: string) => {
     if (sectionId && location.pathname === '/') {
       const element = document.getElementById(sectionId);
@@ -39,13 +40,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal })
     onClose();
   };
 
-  if (!isOpen) return null;
-
   return (
     <>
-      <div className="menu-overlay" onClick={onClose} />
+      {/* Оверлей виден только когда меню открыто */}
+      {isOpen && <div className="menu-overlay" onClick={onClose} />}
       
-      <div className="mobile-menu">
+      {/* Контейнер меню с классом open */}
+      <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
           {/* Шапка меню */}
           <div className="mobile-menu-header">

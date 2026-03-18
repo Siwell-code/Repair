@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
+import MobileMenu from '../MobileMenu'; // Импортируем MobileMenu
 import Modal from '../Modal';
 import FullscreenViewer from '../FullscreenViewer/FullscreenViewer';
 import { FullscreenProvider } from '../../context/FullscreenContext';
@@ -21,6 +22,7 @@ const Layout: React.FC<LayoutProps> = ({
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -34,9 +36,18 @@ const Layout: React.FC<LayoutProps> = ({
             isMenuOpen={isMenuOpen}
           />
         )}
+        
+        {/* Добавляем MobileMenu */}
+        <MobileMenu 
+          isOpen={isMenuOpen}
+          onClose={closeMenu}
+          onOpenModal={openModal}
+        />
+        
         <main className="layout-main">
           {children}
         </main>
+        
         {showFooter && <Footer onOpenModal={openModal} />}
         <Modal isOpen={isModalOpen} onClose={closeModal} />
         <FullscreenViewer />

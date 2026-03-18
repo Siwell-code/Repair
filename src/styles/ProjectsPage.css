@@ -1,11 +1,8 @@
-/* ProjectsPage.css */
-
 .projects-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #fdf6e3 0%, #f5f5dc 100%);
 }
 
-/* Hero секция */
 .projects-hero {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
   padding: 120px 20px 80px;

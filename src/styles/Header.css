@@ -22,7 +22,9 @@
   z-index: 1001;
   flex-shrink: 0;
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .logo:hover {
@@ -92,12 +94,13 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
 }
 
 .desktop-consultation-button:hover {
   background: #c2a682;
   color: #333;
+  transform: translateY(-2px);
 }
 
 /* ===== МОБИЛЬНЫЙ ХЕДЕР ===== */
@@ -113,6 +116,12 @@
   gap: 12px;
 }
 
+/* ===== МОБИЛЬНЫЙ ТЕЛЕФОН С ТУЛТИПОМ ===== */
+.mobile-phone-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .mobile-phone-button {
   display: flex;
   align-items: center;
@@ -121,13 +130,115 @@
   height: 44px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
 }
 
-.mobile-phone-button:hover {
+.mobile-phone-button:hover,
+.mobile-phone-button.active {
   background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
+.mobile-phone-tooltip {
+  position: absolute;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+  border: 1px solid rgba(168, 125, 95, 0.3);
+}
+
+.mobile-phone-tooltip-link {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.3s;
+  display: block;
+  text-align: center;
+}
+
+.mobile-phone-tooltip-link:hover {
+  color: #a87d5f;
+}
+
+/* Десктоп тултип (справа) */
+@media (min-width: 769px) {
+  .mobile-phone-tooltip {
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+  }
+  
+  .mobile-phone-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-right: 1px solid rgba(168, 125, 95, 0.3);
+    border-top: 1px solid rgba(168, 125, 95, 0.3);
+  }
+}
+
+/* ===== МОБИЛЬНЫЙ ТУЛТИП (СНИЗУ) ===== */
+@media (max-width: 768px) {
+  .mobile-phone-tooltip {
+    top: 55px; /* Появляется снизу от иконки */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+  }
+  
+  .mobile-phone-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -6px; /* Стрелка сверху */
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-left: 1px solid rgba(168, 125, 95, 0.3);
+    border-top: 1px solid rgba(168, 125, 95, 0.3);
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* На совсем маленьких экранах */
+@media (max-width: 480px) {
+  .mobile-phone-tooltip {
+    top: 50px;
+    padding: 6px 14px;
+  }
+  
+  .mobile-phone-tooltip-link {
+    font-size: 13px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Кнопка консультации */
 .mobile-consultation-button {
   padding: 10px 16px;
   background: rgba(255, 255, 255, 0.1);
@@ -137,7 +248,7 @@
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .mobile-consultation-button:hover {
@@ -171,7 +282,7 @@
   width: 24px;
   height: 2px;
   background: white;
-  transition: all 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
   border-radius: 2px;
 }
 
@@ -189,10 +300,7 @@
 
 /* ===== ДЕСКТОП СТИЛИ (1024px И БОЛЬШЕ) ===== */
 @media (min-width: 1024px) {
-  .nav.desktop-only {
-    display: block;
-  }
-  
+  .nav.desktop-only,
   .header-right.desktop-only {
     display: block;
   }
@@ -247,9 +355,7 @@
   }
 }
 
-/* ===== АДАПТИВНОСТЬ ЛОГОТИПА ===== */
-
-/* Планшет (до 1024px) */
+/* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 1024px) {
   .logo-container.desktop {
     width: 180px;
@@ -273,7 +379,6 @@
   }
 }
 
-/* Большие мобильные (до 768px) */
 @media (max-width: 768px) {
   .logo-container.desktop {
     width: 140px;
@@ -292,7 +397,6 @@
   }
 }
 
-/* Маленькие мобильные (до 480px) */
 @media (max-width: 480px) {
   .logo-container.desktop {
     width: 120px;
@@ -311,7 +415,8 @@
     margin-top: 2.5%;
   }
   
-  .mobile-phone-button {
+  .mobile-phone-button,
+  .burger-menu {
     width: 36px;
     height: 36px;
   }
@@ -321,18 +426,12 @@
     font-size: 11px;
   }
   
-  .burger-menu {
-    width: 36px;
-    height: 36px;
-  }
-  
   .burger-line {
     width: 20px;
     height: 2px;
   }
 }
 
-/* Очень маленькие экраны (до 360px) */
 @media (max-width: 360px) {
   .logo-container.desktop {
     width: 100px;
@@ -350,37 +449,4 @@
     padding: 6px 10px;
     font-size: 10px;
   }
-}
-
-/* ===== УБИРАЕМ ВСЕ ЛИШНИЕ ЭФФЕКТЫ ===== */
-
-/* Убираем hover эффекты на внутренних элементах */
-.logo * {
-  transition: none;
-}
-
-.logo *::before,
-.logo *::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Запрещаем любые трансформации внутри логотипа */
-.logo:hover * {
-  transform: none !important;
-}
-
-/* Только один эффект - на сам логотип */
-.logo {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateZ(0); /* Hardware acceleration */
-  backface-visibility: hidden; /* Fix flickering */
-}
-
-.logo:hover {
-  transform: scale(1.05) translateZ(0);
-}
-
-.logo:active {
-  transform: scale(0.95) translateZ(0);
 }

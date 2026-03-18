@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PhoneIcon from './icons/PhoneIcon';
 import LogoIcon from './icons/LogoIcon';
@@ -12,6 +12,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }) => {
   const location = useLocation();
+  const [isPhoneTooltipVisible, setIsPhoneTooltipVisible] = useState(false);
+  const [isMobilePhoneOpen, setIsMobilePhoneOpen] = useState(false);
 
   const scrollToSection = (sectionId: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -22,6 +24,16 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }
       }
     }
   };
+
+  const togglePhoneTooltip = () => {
+    setIsPhoneTooltipVisible(!isPhoneTooltipVisible);
+    // На мобильных устройствах показываем/скрываем номер
+    if (window.innerWidth <= 768) {
+      setIsMobilePhoneOpen(!isMobilePhoneOpen);
+    }
+  };
+
+  const phoneNumber = "+7 (999) 123-45-67";
 
   return (
     <header className="hero-header">
@@ -73,8 +85,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }
           <div className="desktop-contacts-group">
             <div className="desktop-phone-container">
               <PhoneIcon size={24} color="#ffffff" />
-              <a href="tel:+79991234567" className="desktop-phone-link">
-                +7 (999) 123-45-67
+              <a href={`tel:${phoneNumber.replace(/\D/g, '')}`} className="desktop-phone-link">
+                {phoneNumber}
               </a>
             </div>
             <button 
@@ -90,9 +102,28 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }
         {/* Мобильный хедер */}
         <div className="mobile-header">
           <div className="mobile-contacts-group">
-            <a href="tel:+79991234567" className="mobile-phone-button" aria-label="Позвонить">
-              <PhoneIcon size={22} color="#ffffff" />
-            </a>
+            {/* Контейнер с телефоном */}
+            <div className="mobile-phone-wrapper">
+              <button
+                className={`mobile-phone-button ${isMobilePhoneOpen ? 'active' : ''}`}
+                onClick={togglePhoneTooltip}
+                onMouseEnter={() => setIsPhoneTooltipVisible(true)}
+                onMouseLeave={() => setIsPhoneTooltipVisible(false)}
+                aria-label="Показать номер телефона"
+              >
+                <PhoneIcon size={22} color="#ffffff" />
+              </button>
+              
+              {/* Всплывающий номер телефона */}
+              {(isPhoneTooltipVisible || isMobilePhoneOpen) && (
+                <div className="mobile-phone-tooltip">
+                  <a href={`tel:${phoneNumber.replace(/\D/g, '')}`} className="mobile-phone-tooltip-link">
+                    {phoneNumber}
+                  </a>
+                </div>
+              )}
+            </div>
+
             <button 
               className="mobile-consultation-button" 
               onClick={onOpenModal}

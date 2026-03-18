@@ -32,7 +32,8 @@
 
 /* Мобильный меню: еще меньше */
 .logo-container.mobile {
-  width: 80px;
+  width: 100px;
+  height: 90px;
 }
 
 @media (max-width: 480px) {

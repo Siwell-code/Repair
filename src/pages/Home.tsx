@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
 import MobileMenu from '../components/MobileMenu';
 import Modal from '../components/Modal';
 import ScrollToTopButton from '../components/ScrollToTopButton';
@@ -61,18 +60,13 @@ const Home: React.FC = () => {
     }
   ];
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="home-page">
-      <Header
-        onOpenModal={openModal}
-        onToggleMenu={toggleMenu}
-        isMenuOpen={isMenuOpen}
-      />
+
 
       <MobileMenu
         isOpen={isMenuOpen}

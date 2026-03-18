@@ -1,0 +1,34 @@
+.privacy-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdf6e3 0%, #f5f5dc 100%);
+  padding: 20px;
+}
+
+.privacy-page-header {
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  padding: 10px 0;
+}
+
+.privacy-page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: white;
+  color: #2c3e50;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.privacy-page-back:hover {
+  background: #f8f9fa;
+  transform: translateX(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #a87d5f;
+}
