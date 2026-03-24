@@ -4,8 +4,7 @@
   right: 30px;
   width: 50px;
   height: 50px;
-  background-color: var(--accent-brown);
-  color: var(--text-light);
+  background: linear-gradient(135deg, #8a6b52, #a87d5f);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -14,31 +13,31 @@
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(20px);
-  transition: all var(--transition-fast);
-  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   z-index: 999;
+  will-change: opacity, visibility;
 }
 
 .scroll-to-top.visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
 }
 
 .scroll-to-top:hover {
-  background-color: var(--accent-brown-light);
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+  background: linear-gradient(135deg, #a87d5f, #c2a682);
+  box-shadow: 0 3px 12px rgba(138, 107, 82, 0.3);
 }
 
 .scroll-to-top:active {
-  transform: translateY(-2px);
+  transform: scale(0.98);
 }
 
 .scroll-to-top svg {
   width: 24px;
   height: 24px;
+  stroke: white;
+  stroke-width: 2;
 }
 
 /* Адаптивность */
@@ -53,6 +52,12 @@
   .scroll-to-top svg {
     width: 20px;
     height: 20px;
+  }
+  
+  /* На мобильных отключаем hover-эффекты */
+  .scroll-to-top:hover {
+    transform: none;
+    background: linear-gradient(135deg, #8a6b52, #a87d5f);
   }
 }
 

@@ -27,7 +27,6 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onToggleMenu, isMenuOpen }
 
   const togglePhoneTooltip = () => {
     setIsPhoneTooltipVisible(!isPhoneTooltipVisible);
-    // На мобильных устройствах показываем/скрываем номер
     if (window.innerWidth <= 768) {
       setIsMobilePhoneOpen(!isMobilePhoneOpen);
     }

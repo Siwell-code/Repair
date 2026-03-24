@@ -145,7 +145,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      {/* Модальное окно с галереей */}
+
       {isModalOpen && (
         <div className="project-modal-overlay" onClick={closeModal}>
           <div className="project-modal" onClick={(e) => e.stopPropagation()}>

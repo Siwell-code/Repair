@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import throttle from 'lodash.throttle';
 import '../styles/ScrollToTopButton.css';
 
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Показываем кнопку при скролле
+  
+  const checkVisibility = useCallback(() => {
+    const shouldBeVisible = window.pageYOffset > 300;
+    if (shouldBeVisible !== isVisible) {
+      requestAnimationFrame(() => {
+        setIsVisible(shouldBeVisible);
+      });
+    }
+  }, [isVisible]);
+
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    const throttledCheck = throttle(checkVisibility, 200);
+    window.addEventListener('scroll', throttledCheck);
+    
+    return () => {
+      window.removeEventListener('scroll', throttledCheck);
+      throttledCheck.cancel();
     };
+  }, [checkVisibility]);
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
-  // Прокрутка наверх
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
+  }, []);
 
   return (
     <button

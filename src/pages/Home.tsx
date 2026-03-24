@@ -151,7 +151,7 @@ const Home: React.FC = () => {
           }}
         >
           <div className="section-overlay">
-            <h2 className="section-title">О нашей компании</h2>
+            <h2 className="section-title2">О нашей компании</h2>
             <div className="about-content">
               <div className="about-text">
                 <p>

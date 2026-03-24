@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-import MobileMenu from '../MobileMenu'; // Импортируем MobileMenu
+import MobileMenu from '../MobileMenu';
 import Modal from '../Modal';
 import FullscreenViewer from '../FullscreenViewer/FullscreenViewer';
 import { FullscreenProvider } from '../../context/FullscreenContext';
@@ -18,13 +18,13 @@ const Layout: React.FC<LayoutProps> = ({
   showHeader = true, 
   showFooter = true 
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const openModal = useCallback(() => setIsModalOpen(true), []);
+  const closeModal = useCallback(() => setIsModalOpen(false), []);
 
   return (
     <FullscreenProvider>
@@ -37,7 +37,6 @@ const Layout: React.FC<LayoutProps> = ({
           />
         )}
         
-        {/* Добавляем MobileMenu */}
         <MobileMenu 
           isOpen={isMenuOpen}
           onClose={closeMenu}
@@ -56,4 +55,4 @@ const Layout: React.FC<LayoutProps> = ({
   );
 };
 
-export default Layout;
+export default memo(Layout);
